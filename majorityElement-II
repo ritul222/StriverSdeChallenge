@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.* ;
+
+import java.util.ArrayList;
+
+public class Solution 
+{
+    public static ArrayList<Integer> majorityElementII(ArrayList<Integer> arr) 
+    {
+        // Write your code here.
+        ArrayList<Integer>ar=new ArrayList<Integer>();
+        HashMap<Integer,Integer>hm=new HashMap<Integer,Integer>();
+        for(int i:arr)
+        {
+            hm.put(i,hm.getOrDefault(i,0)+1);
+        }
+        for(int i:hm.keySet())
+        {
+            if(hm.get(i)>(int)Math.floor(arr.size()/3))
+            ar.add(i);
+        }return ar;
+    }
+}
