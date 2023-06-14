@@ -1,0 +1,76 @@
+//works in O(n^2) time
+
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+     public Node child;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+         this.child = null;
+     }
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+         this.child = null;
+     }
+     Node(int data, Node next, Node child)
+     {
+         this.data = data;
+         this.next = next;
+         this.child = child;
+     }
+ }
+
+ *****************************************************************/
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.*;
+public class Solution {
+  
+    public static Node flattenLinkedList(Node head) {
+        //Write your code here
+        Node curr=head;
+         Queue<Node>q=new ArrayDeque<Node>();
+           List<Integer> temp = new ArrayList<Integer>();
+         if(head.next==null && head.child==null)
+         return head;
+         if(head==null)
+         return null;
+        // if(head.child)
+         while(curr!=null)
+         {
+                if(curr.next!=null)
+             {
+                 q.add(curr.next);
+             }
+             if(curr.child==null)
+             {
+                 
+                 curr.child=q.poll();
+             }
+               temp.add(curr.data);
+             curr=curr.child;
+           
+         }
+         Collections.sort(temp); // Sort the temporary list
+
+        curr = head;
+        int index = 0;
+
+        // Update the data values of each node with the sorted values from the temporary list
+        while (curr != null) {
+            curr.data = temp.get(index++);
+            curr = curr.child;
+        }
+         return head;
+        
+    }
+}
