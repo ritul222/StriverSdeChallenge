@@ -1,0 +1,50 @@
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ }
+
+ *****************************************************************/
+import java.util.*;
+public class Solution {
+    public static int findIntersection(Node firstHead, Node secondHead) {
+        //Write your code here
+        HashSet<Node>set=new HashSet<Node>();
+        int k=0;
+        Node curr=firstHead;
+        Node curr2=secondHead;
+        while(curr!=null)
+        {
+            set.add(curr);
+            curr=curr.next;
+        }
+        while(curr2!=null)
+        {
+            if(set.contains(curr2))
+            {
+                k=curr2.data;
+                return k;
+            }
+            curr2=curr2.next;
+        }return -1;
+    }
+}
