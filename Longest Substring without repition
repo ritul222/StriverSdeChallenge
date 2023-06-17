@@ -1,0 +1,27 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+	public static int uniqueSubstrings(String S) 
+    {
+		//write your code here
+		 int n=S.length();
+        int res=0;
+        for(int i=0;i<n;i++)
+        {
+            boolean visit[]=new boolean[256];
+            for(int j=i;j<n;j++)
+            {
+                if(visit[S.charAt(j)]==true)
+                break;
+                else
+                {
+                    res=Math.max(res,j-i+1);
+                    visit[S.charAt(j)]=true;
+                }
+               
+            }
+             visit[S.charAt(i)]=false;
+        }return res;
+	}
+}
