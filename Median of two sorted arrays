@@ -1,0 +1,25 @@
+import java.util.*;
+public class Solution {
+    public static double median(int[] a, int[] b) {
+        ArrayList<Integer>arr=new ArrayList<Integer>();
+        int n=a.length;
+        int m=b.length;
+        int k=m+n;
+       for(int i=0;i<n;i++)
+       {
+           arr.add(a[i]);
+       }
+       for(int i=0;i<m;i++)
+       {
+           arr.add(b[i]);
+       }
+       Collections.sort(arr);
+        if(arr.size()%2!=0)
+        return arr.get(arr.size()/2);
+        else
+        {
+            double med=(arr.get(arr.size()/2)+arr.get(arr.size()/2-1))/2.00;
+            return med;
+        }   
+    }
+}
