@@ -1,0 +1,39 @@
+import java.util.* ;
+import java.io.*; 
+/************************************************************
+
+    Following is the TreeNode class structure
+
+    class TreeNode<T>
+    {
+       public:
+        T data;
+        TreeNode<T> left;
+        TreeNode<T> right;
+
+        TreeNode(T data)
+        {
+            this.data = data;
+            left = null;
+            right = null;
+        }
+    };
+
+************************************************************/
+
+public class Solution {
+
+    public  static int findCeil(TreeNode<Integer> root, int x) {
+
+       if(root==null)
+       return -1;
+       if(root.data<x)
+       return findCeil(root.right,x);
+       int ans=findCeil(root.left, x);
+       return ans>=x?ans:root.data;
+
+        
+     
+
+    }
+}
